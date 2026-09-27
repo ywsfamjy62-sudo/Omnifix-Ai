@@ -23,12 +23,12 @@ app.post('/api/chat', async (req, res) => {
   try {
     const ai = new GoogleGenAI({ apiKey });
 
-    // استخدام النموذج المحدث والمستقر جيميناي 2.5
+    // استدعاء نموذج gemini-2.5-flash المباشر
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
       contents: message,
       config: {
-        systemInstruction: 'أنت مساعد OmniFix AI الذكي. أجب على كافة أسئلة المستخدمين بدقة واكتب الأكواد واشرحها. يمنع منعاً باتاً توليد الصور والفيديوهات واعتذر بلباقة عند طلبها.'
+        systemInstruction: 'أنت مساعد OmniFix AI الذكي. أجب على كافة أسئلة المستخدمين بدقة واكتب الأكواد واشرحها. يُمنع منعاً باتاً توليد أو إجابة طلبات إنشاء الصور والفيديوهات، واعتذر بلباقة عند طلبها.'
       }
     });
 
